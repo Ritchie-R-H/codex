@@ -17,17 +17,26 @@ paper](https://arxiv.org/abs/2202.06533).
 ## Documentation & getting help
 
 Please post all questions or comments on
-[Discussions](https://github.com/google/codex/discussions). Only file
-[Issues](https://github.com/google/codex/issues) for actual bugs or feature requests. On
-Discussions, you may get a faster answer, and you help other people find the question or
-answer more easily later.
+[Discussions](https://github.com/balle-lab/google/codex/discussions). Only file
+[Issues](https://github.com/balle-lab/codex/issues) for actual bugs or feature requests.
+On Discussions, you may get a faster answer, and you help other people find the question
+or answer more easily later.
 
 ## Installation
 
 To install CoDeX via `pip`, run the following command:
 
 ```bash
-python -m pip install --upgrade git+https://github.com/balle-lab/codex.git
+python -m pip install git+https://github.com/balle-lab/codex.git
+```
+
+> [!IMPORTANT]
+> The Wasserstein Distortion implementation currently requires a patch to `flaxmodels`
+> which, as of June 2025, has not been published on PyPI yet. If you need this
+> functionality, please install `flaxmodels` directly from GitHub to avoid problems:
+
+```bash
+python -m pip install git+https://github.com/matthias-wright/flaxmodels.git
 ```
 
 To test that the installation works correctly, you can run the unit tests with:
@@ -42,23 +51,28 @@ in the last line.
 
 ## Usage
 
-We recommend importing the library from your Python code as follows:
+We recommend importing the library from your Python code and using it as follows:
 
 ```python
 import codex as cdx
+
+... = cdx.ops.ste_round(...)
+... = cdx.loss.wasserstein_distortion(...)
 ```
 
-## Citation
+Entropy models can be imported with support for
+[Equinox](https://github.com/patrick-kidger/equinox) or for
+[Flax](https://github.com/google/flax):
 
-If you use this library for research purposes, please cite:
+```python
+from codex.ems import equinox as ems
+# or:
+from codex.ems import flax as ems
+
+... = ems.RealMappedFourierEntropyModel(...)
 ```
-@software{codex_github,
-  author = "Ballé, Jona and Hwang, Sung Jin and Agustsson, Eirikur",
-  title = "{CoDeX}: Learned Data Compression in {JAX}",
-  url = "http://github.com/balle-lab/codex",
-  version = "0.0.1",
-  year = "2022",
-}
-```
-In the above BibTeX entry, names are top contributors sorted by number of commits. Please
-adjust version number and year according to the version that was actually used.
+
+## Citations
+
+If you use this library for scientific or research purposes, please refer to the
+docstrings in the individual functions and classes to see which papers to cite.

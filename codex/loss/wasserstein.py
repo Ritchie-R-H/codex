@@ -155,8 +155,8 @@ def wasserstein_distortion(
     Notes
     -----
     For an introduction to Wasserstein Distortion, refer to [1]_. For a description of
-    this implementation, refer to [2]_. Please cite the paper if you use this code for
-    scientific work.
+    this implementation, refer to [2]_. Please cite these papers if you use this code for
+    scientific or research work.
 
     .. [1] Y. Qiu, A. B. Wagner, J. Ballé, L. Theis: "Wasserstein Distortion: Unifying
        Fidelity and Realism," 2024 58th Ann. Conf. on Information Sciences and Systems
@@ -286,8 +286,8 @@ def multi_wasserstein_distortion(
     Notes
     -----
     For an introduction to Wasserstein Distortion, refer to [1]_. For a description of
-    this implementation, refer to [2]_. Please cite the paper if you use this code for
-    scientific work.
+    this implementation, refer to [2]_. Please cite these papers if you use this code for
+    scientific or research work.
 
     .. [1] Y. Qiu, A. B. Wagner, J. Ballé, L. Theis: "Wasserstein Distortion: Unifying
        Fidelity and Realism," 2024 58th Ann. Conf. on Information Sciences and Systems
@@ -352,9 +352,13 @@ def vgg16_wasserstein_distortion(
     Parameters
     ----------
     image_a
-        First image to be compared in format ``(3, height, width)``.
+        First image to be compared in format ``(3, height, width)``. The pixel format is
+        assumed to be the same as for VGG: sRGB colorspace, with pixel values linearly
+        scaled to floats in the range [0, 1].
     image_b
-        Second image to be compared in format ``(3, height, width)``.
+        Second image to be compared in format ``(3, height, width)``. The pixel format is
+        assumed to be the same as for VGG: sRGB colorspace, with pixel values linearly
+        scaled to floats in the range [0, 1].
     log2_sigma
         Array, shape ``(height, width)``. The base two logarithm of the sigma map, which
         indicates the amount of summarization in each location. Doesn't have to have the
@@ -379,7 +383,7 @@ def vgg16_wasserstein_distortion(
     Notes
     -----
     This is the distortion loss function used in [1]_. Please cite the paper if you use
-    this code for scientific work.
+    this code for scientific or research work.
 
     .. [1] J. Ballé, L. Versari, E. Dupont, H. Kim, M. Bauer: "Good, Cheap,
        and Fast: Overfitted Image Compression with Wasserstein Distortion," 2025 IEEE/CVF
